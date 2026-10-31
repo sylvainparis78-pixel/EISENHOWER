@@ -69,8 +69,8 @@
 
     @media (min-width: 900px) {
       .app-container.desktop-mode {
-        width: 95vw;
-        max-width: 1400px;
+        width: 98vw;
+        max-width: 1550px;
         aspect-ratio: 16 / 9;
         display: flex;
         flex-direction: column;
@@ -86,21 +86,9 @@
       transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
     }
     .quadrant-card:hover {
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px -5px rgba(0, 163, 224, 0.25);
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px -5px rgba(0, 163, 224, 0.25);
     }
-
-    .radar-pill {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .radar-pill.ready { background: rgba(16, 185, 129, 0.2); border-color: #10B981; color: #86efac; }
 
     .screen { display: none; }
     .screen.active { display: block; }
@@ -108,8 +96,8 @@
 </head>
 <body class="h-full text-slate-100 blueprint-bg font-sans flex flex-col justify-between overflow-x-hidden select-none">
 
-  <!-- En-tête Global épuré (sans logo EQUANS en haut à gauche) -->
-  <header class="bg-equans-navy/90 border-b border-equans-cyan/30 backdrop-blur-md sticky top-0 z-40 px-4 py-3 shadow-lg">
+  <!-- En-tête Global épuré -->
+  <header class="bg-equans-navy/90 border-b border-equans-cyan/35 backdrop-blur-md sticky top-0 z-40 px-4 py-2 shadow-lg">
     <div class="max-w-7xl mx-auto flex justify-between items-center">
       <div class="flex items-center space-x-3">
         <div>
@@ -120,10 +108,10 @@
       
       <!-- Widget Code Session & Heure -->
       <div class="flex items-center space-x-3">
-        <div id="session-code-display" class="text-xs font-mono bg-equans-cyan/20 border border-equans-cyan/40 px-3 py-1.5 rounded-lg text-equans-cyan font-bold">
+        <div id="session-code-display" class="text-xs font-mono bg-equans-cyan/20 border border-equans-cyan/40 px-3 py-1 rounded-lg text-equans-cyan font-bold">
           CODE: ----
         </div>
-        <div id="time-widget" class="flex items-center bg-slate-800/90 border border-slate-700 px-3 py-1.5 rounded-full">
+        <div id="time-widget" class="flex items-center bg-slate-800/90 border border-slate-700 px-3 py-1 rounded-full">
           <i class="fa-regular fa-clock text-equans-orange mr-2 animate-pulse"></i>
           <span id="current-time" class="font-mono text-sm font-bold text-slate-100">08:15</span>
         </div>
@@ -132,7 +120,7 @@
   </header>
 
   <!-- Conteneur Principal -->
-  <main class="flex-grow flex items-center justify-center p-4 max-w-7xl mx-auto w-full">
+  <main class="flex-grow flex items-center justify-center p-2 max-w-[1550px] mx-auto w-full">
     <div class="app-container" id="main-container">
 
       <!-- ================= ÉCRAN D'ACCUEIL / LOGIN ================= -->
@@ -163,7 +151,7 @@
             <h3 class="text-sm font-bold text-equans-orange uppercase tracking-wider"><i class="fa-solid fa-users mr-2"></i> Votre Équipe / Nom</h3>
             <div>
               <label class="block text-xs font-bold text-slate-300 mb-1">Nom de l'équipe ou du Chef de Chantier :</label>
-              <input type="text" id="input-team-name" placeholder="Ex: Les Stratèges du Batiment" class="w-full p-3 bg-slate-800 border border-slate-600 rounded-lg text-white font-bold focus:border-equans-orange outline-none">
+              <input type="text" id="input-team-name" placeholder="Ex: Les Stratèges du Bâtiment" class="w-full p-3 bg-slate-800 border border-slate-600 rounded-lg text-white font-bold focus:border-equans-orange outline-none">
             </div>
             <button onclick="registerPlayer()" class="w-full py-3 bg-equans-orange hover:bg-orange-600 text-white font-extrabold rounded-lg shadow-lg transition-all">
               Prendre son poste ➔
@@ -182,18 +170,18 @@
 
       <!-- ================= CONSOLE ANIMATEUR (PROJETABLE 16/9) ================= -->
       <div id="screen-animator" class="screen w-full h-full">
-        <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 h-full">
+        <div class="grid grid-cols-1 lg:grid-cols-4 gap-3 h-full">
           
           <!-- Panneau de Contrôle Animateur (Gauche) -->
-          <div class="bg-slate-800/95 border border-slate-700 rounded-2xl p-4 flex flex-col justify-between space-y-4 shadow-xl">
-            <div class="space-y-4">
-              <div class="border-b border-slate-700 pb-3">
-                <h2 class="text-lg font-black text-equans-cyan"><i class="fa-solid fa-sliders mr-2"></i> Console Animateur</h2>
-                <p class="text-xs text-slate-400">Pilotage du scénario en direct</p>
+          <div class="bg-slate-800/95 border border-slate-700 rounded-2xl p-3 flex flex-col justify-between space-y-2 shadow-xl">
+            <div class="space-y-2 flex-grow flex flex-col overflow-hidden">
+              <div class="border-b border-slate-700 pb-2 flex-shrink-0">
+                <h2 class="text-base font-black text-equans-cyan"><i class="fa-solid fa-sliders mr-1.5"></i> Console Animateur</h2>
+                <p class="text-[11px] text-slate-400">Pilotage du scénario en direct</p>
               </div>
 
               <!-- Statut & Progression -->
-              <div class="bg-slate-900/80 p-3 rounded-xl border border-slate-700 space-y-2">
+              <div class="bg-slate-900/80 p-2.5 rounded-xl border border-slate-700 space-y-1 flex-shrink-0">
                 <div class="flex justify-between items-center text-xs font-bold">
                   <span class="text-slate-400">Progression :</span>
                   <span id="animator-progress-label" class="text-equans-cyan">Situation 0 / 6</span>
@@ -204,87 +192,126 @@
                 </div>
               </div>
 
-              <!-- Liste des joueurs connectés avec leurs 3 jauges individuelles -->
-              <div>
-                <div class="flex justify-between items-center mb-2">
+              <!-- Liste des joueurs connectés avec leurs 3 jauges -->
+              <div class="flex-grow flex flex-col overflow-hidden">
+                <div class="flex justify-between items-center mb-1 flex-shrink-0">
                   <strong class="text-xs uppercase tracking-wider text-slate-300">Joueurs & Jauges (<span id="animator-count-players">0</span>) :</strong>
                 </div>
-                <div id="animator-teams-board" class="space-y-2 max-h-72 overflow-y-auto pr-1">
-                  <!-- Liste dynamique alimentée avec les 3 jauges par joueur -->
+                <div id="animator-teams-board" class="space-y-2 overflow-y-auto flex-grow pr-1">
+                  <!-- Liste dynamique -->
                 </div>
               </div>
             </div>
 
             <!-- Actions Animateur -->
-            <div class="space-y-2 pt-2 border-t border-slate-700">
-              <button id="btn-animator-action" onclick="animatorMainAction()" class="w-full py-4 bg-equans-orange hover:bg-orange-600 text-white font-extrabold text-base rounded-xl shadow-lg transition-all">
+            <div class="pt-2 border-t border-slate-700 flex-shrink-0">
+              <button id="btn-animator-action" onclick="animatorMainAction()" class="w-full py-3 bg-equans-orange hover:bg-orange-600 text-white font-extrabold text-sm rounded-xl shadow-lg transition-all">
                 🚀 Lancer la Première Situation
               </button>
             </div>
           </div>
 
           <!-- Écran Principal Projeté (Centre / Droite - 16/9) -->
-          <div class="lg:col-span-3 bg-slate-950/90 border-2 border-slate-800 rounded-2xl p-6 flex flex-col justify-between items-center text-center relative shadow-2xl overflow-hidden">
+          <div class="lg:col-span-3 bg-slate-950/90 border-2 border-slate-800 rounded-2xl p-4 flex flex-col justify-between items-center text-center relative shadow-2xl overflow-hidden">
             
-            <!-- HUD Jauges Globales (Temps Réel) -->
-            <div class="w-full bg-slate-900/90 border border-slate-700 rounded-xl p-4 shadow-lg grid grid-cols-3 gap-4 mb-4">
-              <!-- Jauge 1 : Sécurité -->
-              <div class="space-y-1">
-                <div class="flex justify-between text-xs font-bold">
-                  <span class="flex items-center text-emerald-400"><i class="fa-solid fa-shield-halved mr-1.5"></i> 🦺 Sécurité</span>
-                  <span id="anim-gauge-sec-val" class="text-slate-300">80%</span>
-                </div>
-                <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-slate-800">
-                  <div id="anim-gauge-sec-bar" class="gauge-bar bg-emerald-500 h-full rounded-full" style="width: 80%;"></div>
-                </div>
-              </div>
-              <!-- Jauge 2 : Climat Équipe -->
-              <div class="space-y-1">
-                <div class="flex justify-between text-xs font-bold">
-                  <span class="flex items-center text-amber-400"><i class="fa-solid fa-mug-hot mr-1.5"></i> ☕ Climat</span>
-                  <span id="anim-gauge-team-val" class="text-slate-300">80%</span>
-                </div>
-                <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-slate-800">
-                  <div id="anim-gauge-team-bar" class="gauge-bar bg-amber-500 h-full rounded-full" style="width: 80%;"></div>
-                </div>
-              </div>
-              <!-- Jauge 3 : Planning -->
-              <div class="space-y-1">
-                <div class="flex justify-between text-xs font-bold">
-                  <span class="flex items-center text-cyan-400"><i class="fa-solid fa-stopwatch mr-1.5"></i> ⏱️ Planning</span>
-                  <span id="anim-gauge-plan-val" class="text-slate-300">80%</span>
-                </div>
-                <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-slate-800">
-                  <div id="anim-gauge-plan-bar" class="gauge-bar bg-cyan-500 h-full rounded-full" style="width: 80%;"></div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Image Centrale : La Matrice d'Eisenhower -->
-            <div id="animator-matrice-box" class="w-full flex-grow flex items-center justify-center p-2">
-              <img src="EISENHOWER.jpeg" alt="Matrice d'Eisenhower - Clarifier le Chaos" class="max-h-[420px] w-auto object-contain rounded-xl border-2 border-equans-cyan/40 shadow-2xl">
-            </div>
-
-            <!-- Zone de Situation / Titre -->
-            <div id="animator-situation-banner" class="w-full bg-slate-900/90 border border-slate-700 rounded-xl p-4 mt-4 text-left space-y-2">
+            <!-- 1. Situation en cours EN HAUT (Police augmentée) -->
+            <div id="animator-situation-banner" class="w-full bg-slate-900/95 border border-equans-cyan/40 rounded-xl p-4 text-left space-y-2 mb-2 shadow-md">
               <div class="flex justify-between items-center">
                 <span id="anim-sit-step" class="text-xs font-bold uppercase text-equans-cyan bg-equans-cyan/10 px-3 py-1 rounded-full border border-equans-cyan/20">En attente...</span>
-                <span id="anim-sit-time" class="text-xs font-mono text-slate-400">⏰ 08:15</span>
+                <span id="anim-sit-time" class="text-sm font-mono text-slate-400">⏰ 08:15</span>
               </div>
-              <h3 id="anim-sit-title" class="text-lg font-extrabold text-white">Bienvenue dans Le Chaos de 8h15</h3>
-              <p id="anim-sit-desc" class="text-xs text-slate-300">L'animateur va lancer la première situation de la journée.</p>
+              <h3 id="anim-sit-title" class="text-lg lg:text-xl font-extrabold text-white">Bienvenue dans Le Chaos de 8h15</h3>
+              <p id="anim-sit-desc" class="text-sm lg:text-base text-slate-200 leading-relaxed">L'animateur va lancer la première situation de la journée.</p>
             </div>
 
-            <!-- Podiums et Fin de Partie -->
-            <div id="animator-finish-box" class="hidden w-full space-y-4 py-6">
-              <h2 class="text-3xl font-black text-equans-gold">🔔 12:00 - Fin de Matinée & Bilan Global</h2>
-              <div id="animator-final-stats" class="grid grid-cols-3 gap-4 max-w-xl mx-auto bg-slate-900 p-4 rounded-xl border border-slate-700 mb-4">
-                <!-- Stats récap -->
+            <!-- 2. Zone Centrale : Image agrandie au maximum + Jauges verticales à droite -->
+            <div class="w-full flex-grow flex items-center justify-center gap-4 relative my-1">
+              
+              <!-- Image de la Matrice d'Eisenhower -->
+              <div id="animator-matrice-box" class="flex-grow flex items-center justify-center relative h-full">
+                <img src="EISENHOWER.jpeg" alt="Matrice d'Eisenhower" class="max-h-[350px] lg:max-h-[410px] w-auto object-contain rounded-2xl border-2 border-equans-cyan/50 shadow-2xl">
+                
+                <!-- Fenêtre POP-UP d'explication -->
+                <div id="animator-popup-feedback" class="hidden absolute inset-2 bg-slate-950/95 border-2 border-equans-gold rounded-2xl p-6 flex flex-col justify-center items-center text-center shadow-2xl z-30 backdrop-blur-md space-y-3">
+                  <div class="text-equans-gold font-black text-lg flex items-center space-x-2">
+                    <i class="fa-solid fa-circle-check text-emerald-400 text-2xl"></i>
+                    <span id="popup-title">Correction Validée</span>
+                  </div>
+                  <p id="popup-text" class="text-sm lg:text-base text-slate-100 leading-relaxed max-w-2xl">Explication...</p>
+                  <div class="bg-equans-navy/90 border border-equans-cyan/40 rounded-xl p-3 text-xs lg:text-sm text-slate-200 max-w-2xl shadow-inner">
+                    <span class="font-bold text-equans-cyan block mb-1">💡 Réflexe Eisenhower :</span>
+                    <span id="popup-tip">Astuce...</span>
+                  </div>
+                </div>
               </div>
-              <!-- Section dédiée aux meilleurs joueurs signalés visuellement -->
-              <div id="animator-winners-section" class="bg-slate-900/90 border border-equans-gold/50 rounded-xl p-4 max-w-xl mx-auto space-y-2">
-                <!-- Vainqueurs dynamiques -->
+
+              <!-- 3 Jauges Globales verticales à droite de la photo -->
+              <div class="bg-slate-900/90 border border-slate-700 rounded-xl p-3 w-52 flex flex-col justify-around gap-3 shadow-lg flex-shrink-0">
+                <!-- Sécurité -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-xs font-bold">
+                    <span class="text-emerald-400 flex items-center"><i class="fa-solid fa-shield-halved mr-1"></i> 🦺 Sécurité</span>
+                    <span id="anim-gauge-sec-val" class="text-slate-200 text-sm">80%</span>
+                  </div>
+                  <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-slate-800">
+                    <div id="anim-gauge-sec-bar" class="gauge-bar bg-emerald-500 h-full rounded-full" style="width: 80%;"></div>
+                  </div>
+                </div>
+                <!-- Climat -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-xs font-bold">
+                    <span class="text-amber-400 flex items-center"><i class="fa-solid fa-mug-hot mr-1"></i> ☕ Climat</span>
+                    <span id="anim-gauge-team-val" class="text-slate-200 text-sm">80%</span>
+                  </div>
+                  <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-slate-800">
+                    <div id="anim-gauge-team-bar" class="gauge-bar bg-amber-500 h-full rounded-full" style="width: 80%;"></div>
+                  </div>
+                </div>
+                <!-- Planning -->
+                <div class="space-y-1">
+                  <div class="flex justify-between text-xs font-bold">
+                    <span class="text-cyan-400 flex items-center"><i class="fa-solid fa-stopwatch mr-1"></i> ⏱️ Planning</span>
+                    <span id="anim-gauge-plan-val" class="text-slate-200 text-sm">80%</span>
+                  </div>
+                  <div class="w-full bg-slate-950 rounded-full h-3 overflow-hidden border border-slate-800">
+                    <div id="anim-gauge-plan-bar" class="gauge-bar bg-cyan-500 h-full rounded-full" style="width: 80%;"></div>
+                  </div>
+                </div>
               </div>
+
+            </div>
+
+            <!-- 3. Réponses possibles EN BAS (Police augmentée pour l'animateur) -->
+            <div class="w-full grid grid-cols-2 sm:grid-cols-4 gap-3 mt-2">
+              <div id="anim-q-card-1" class="bg-slate-900 border border-slate-700 p-3 rounded-xl text-left transition-all">
+                <span class="text-xs font-bold text-rose-400 block mb-1"><i class="fa-solid fa-fire mr-1"></i> 1. URGENT & IMPORTANT</span>
+                <span class="text-xs lg:text-sm text-slate-200 font-semibold">Agir immédiatement</span>
+              </div>
+              <div id="anim-q-card-2" class="bg-slate-900 border border-slate-700 p-3 rounded-xl text-left transition-all">
+                <span class="text-xs font-bold text-sky-400 block mb-1"><i class="fa-solid fa-calendar-check mr-1"></i> 2. IMPORTANT & NON URGENT</span>
+                <span class="text-xs lg:text-sm text-slate-200 font-semibold">Planifier</span>
+              </div>
+              <div id="anim-q-card-3" class="bg-slate-900 border border-slate-700 p-3 rounded-xl text-left transition-all">
+                <span class="text-xs font-bold text-amber-400 block mb-1"><i class="fa-solid fa-people-arrows mr-1"></i> 3. URGENT & NON IMPORTANT</span>
+                <span class="text-xs lg:text-sm text-slate-200 font-semibold">Déléguer</span>
+              </div>
+              <div id="anim-q-card-4" class="bg-slate-900 border border-slate-700 p-3 rounded-xl text-left transition-all">
+                <span class="text-xs font-bold text-slate-400 block mb-1"><i class="fa-solid fa-trash-can mr-1"></i> 4. NI URGENT NI IMPORTANT</span>
+                <span class="text-xs lg:text-sm text-slate-200 font-semibold">Éliminer</span>
+              </div>
+            </div>
+
+            <!-- Écran de Fin / Bilan -->
+            <div id="animator-finish-box" class="hidden w-full space-y-3 py-2 overflow-y-auto max-h-full">
+              <h2 class="text-2xl font-black text-equans-gold">🔔 12:00 - Fin de Matinée & Bilan Global</h2>
+              
+              <!-- Image affichée sur la dernière page -->
+              <div class="flex justify-center my-1">
+                <img src="EISENHOWER.jpeg" alt="Matrice d'Eisenhower Bilan" class="max-h-[160px] w-auto object-contain rounded-xl border-2 border-equans-gold/40 shadow-xl">
+              </div>
+
+              <div id="animator-final-stats" class="grid grid-cols-3 gap-4 max-w-xl mx-auto bg-slate-900 p-3 rounded-xl border border-slate-700"></div>
+              <div id="animator-winners-section" class="bg-slate-900/90 border border-equans-gold/50 rounded-xl p-3 max-w-xl mx-auto space-y-1"></div>
             </div>
 
           </div>
@@ -424,7 +451,7 @@
           <div class="bg-equans-navy/50 border border-equans-cyan/30 rounded-lg p-3 text-xs text-slate-300 flex items-start space-x-2">
             <i class="fa-solid fa-lightbulb text-equans-gold text-sm mt-0.5"></i>
             <div>
-              <span class="font-bold text-equans-cyan block mb-0.5">Le réflexe Eisenhower EQUANS :</span>
+              <span class="font-bold text-equans-cyan block mb-0.5">Le réflexe Eisenhower :</span>
               <span id="fb-eisenhower-tip">Astuce théorique...</span>
             </div>
           </div>
@@ -437,6 +464,12 @@
             <h2 class="text-xl font-black text-white">Bilan de votre Gestion</h2>
             <p id="final-profile-title" class="text-sm font-bold text-equans-cyan">Profil : Chef de Chantier</p>
           </div>
+          
+          <!-- Image sur la dernière page joueur -->
+          <div class="flex justify-center my-2">
+            <img src="EISENHOWER.jpeg" alt="Matrice d'Eisenhower" class="max-h-[140px] w-auto object-contain rounded-xl border border-equans-cyan/40 shadow-md">
+          </div>
+
           <div id="final-profile-desc" class="text-xs text-slate-300 leading-relaxed bg-slate-900/60 p-3 rounded-xl border border-slate-700"></div>
         </div>
 
@@ -445,12 +478,12 @@
     </div>
   </main>
 
-  <footer class="bg-equans-navy/80 border-t border-slate-800 text-center py-3 text-[11px] text-slate-500">
+  <footer class="bg-equans-navy/80 border-t border-slate-800 text-center py-2 text-[11px] text-slate-500">
     Formation Management & Performance Chantier © 2026
   </footer>
 
   <script>
-    // Configuration Firebase (Identique à la Bourse du Savoir)
+    // Configuration Firebase
     const firebaseConfig = {
       apiKey: "AIzaSyCAz1_Ko1zNmW40sbtaOjnGpGh-P_7aBKw",
       authDomain: "dilemme-du-prisonnier.firebaseapp.com",
@@ -464,7 +497,7 @@
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database();
 
-    // Data des 6 Situations Concrètes BTP
+    // Data des 6 Situations Concrètes BTP (accents et apostrophes corrigés)
     const gameSituations = [
       {
         id: 1,
@@ -483,7 +516,7 @@
       {
         id: 2,
         time: "08:45",
-        title: "Demande 'Improviste' du Client / MOA",
+        title: "Demande Improviste du Client / MOA",
         avatar: "fa-user-tie",
         desc: "Le Maître d'Ouvrage passe dans le couloir : 'Dites Alex, on ajoute 3 prises et on décale cette goulotte. Ça prend 5 minutes, vous me faites ça tout de suite ?'",
         correctQuadrant: 2,
@@ -499,7 +532,7 @@
         time: "09:30",
         title: "Suivi Approvisionnement Armoires Électriques",
         avatar: "fa-truck-ramp-box",
-        desc: "Fournisseur : 'Bonjour Alex, je vous confirme la livraison des 4 armoires TGBT prévues dans 10 jours. Vous êtes prêts pour le stockage sec ?'",
+        desc: "Fournisseur : 'Bonjour Chef, je vous confirme la livraison des 4 armoires TGBT prévues dans 10 jours. Vous êtes prêts pour le stockage sec ?'",
         correctQuadrant: 2,
         feedbacks: {
           1: { title: "Fausse Urgence !", text: "Vous avez stoppé l'équipe pour dégager la zone ce matin... pour un camion qui arrive dans 10 jours.", impacts: { sec: 0, team: -10, plan: -15 }, tip: "Confondre anticipation et urgence immédiate épuise vos équipes." },
@@ -513,12 +546,12 @@
         time: "10:15",
         title: "Prêt de Matériel / Sollicitation Inter-Entreprises",
         avatar: "fa-handshake-angle",
-        desc: "Le chef Peinture déboule : 'Alex, votre nacelle ciseau est libre ? On en a besoin pour 30 minutes en vitesse.'",
+        desc: "Le chef Peinture déboule : 'Dis Alex, votre nacelle ciseau est libre ? On en a besoin pour 30 minutes en vitesse.'",
         correctQuadrant: 3,
         feedbacks: {
           1: { title: "Surcharge personnelle !", text: "Vous avez conduit la nacelle vous-même pendant 45 minutes pour faire plaisir au sous-traitant.", impacts: { sec: 0, team: -5, plan: -10 }, tip: "Votre temps de chef de chantier a une valeur stratégique." },
           2: { title: "Lourdeur administrative", text: "Vous lui avez dit de repasser demain après procédure. Le lot peinture est bloqué et l'ambiance se dégrade.", impacts: { sec: 0, team: -10, plan: -5 }, tip: "Les micro-dépannages ne nécessitent pas toujours 3 jours de délais." },
-          3: { title: "Excellente délégation !", text: "Vous avez désigné votre chef d'équipe : 'Manoel a le CACES et la clé. Il gère l'autorisation avec toi en 10 min.'", impacts: { sec: +5, team: +10, plan: +5 }, tip: "Urgent (pour lui) mais Non-Important (pour votre planning global) : il faut DÉLÉGUER." },
+          3: { title: "Excellente délégation !", text: "Vous avez désigné un de vos compagnons : Manuel a le CACES et la clé. Il gère l'autorisation avec toi en 10 min.", impacts: { sec: +5, team: +10, plan: +5 }, tip: "Urgent (pour lui) mais Non-Important (pour votre planning global) : il faut DÉLÉGUER." },
           4: { title: "Refus catégorique", text: "Vous avez répondu 'Chacun son matos'. Ils refuseront de vous prêter leur matériel la semaine prochaine.", impacts: { sec: 0, team: -15, plan: 0 }, tip: "La bonne entente inter-entreprises se nourrit de souplesse déléguée." }
         }
       },
@@ -691,7 +724,7 @@
       const avgTeam = entries.length ? Math.round(sumTeam / entries.length) : 80;
       const avgPlan = entries.length ? Math.round(sumPlan / entries.length) : 80;
 
-      // Update jauges Animateur globales
+      // Update jauges globales
       document.getElementById('anim-gauge-sec-val').innerText = avgSec + '%';
       document.getElementById('anim-gauge-team-val').innerText = avgTeam + '%';
       document.getElementById('anim-gauge-plan-val').innerText = avgPlan + '%';
@@ -700,7 +733,7 @@
       document.getElementById('anim-gauge-team-bar').style.width = avgTeam + '%';
       document.getElementById('anim-gauge-plan-bar').style.width = avgPlan + '%';
 
-      // Affichage de chaque joueur avec ses 3 jauges individuelles dans la console animateur
+      // Affichage des joueurs dans le panneau gauche
       const teamsBoard = document.getElementById('animator-teams-board');
       teamsBoard.innerHTML = entries.map(([_, j]) => {
         const jSec = j.sec || 80;
@@ -709,34 +742,40 @@
         const isReady = j.hasAnswered;
 
         return `
-          <div class="bg-slate-900/90 border border-slate-700 rounded-xl p-2.5 space-y-2">
-            <div class="flex justify-between items-center text-xs">
-              <span class="font-extrabold text-white truncate max-w-[150px]">${j.name}</span>
+          <div class="bg-slate-900/90 border border-slate-700 rounded-xl p-2.5 space-y-1.5">
+            <div class="flex justify-between items-center text-sm">
+              <span class="font-extrabold text-white truncate max-w-[130px]">${j.name}</span>
               <span class="text-[10px] px-2 py-0.5 rounded ${isReady ? 'bg-emerald-500/20 text-emerald-400 font-bold' : 'bg-slate-800 text-slate-400'}">
                 ${isReady ? 'Prêt ✓' : 'Réflexion...'}
               </span>
             </div>
-            <div class="grid grid-cols-3 gap-2 text-[10px]">
+            <div class="grid grid-cols-3 gap-2 text-xs">
               <div>
                 <div class="flex justify-between text-emerald-400 font-semibold mb-0.5"><span>🦺</span><span>${jSec}%</span></div>
-                <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden"><div class="bg-emerald-500 h-full rounded-full" style="width: ${jSec}%;"></div></div>
+                <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden"><div class="bg-emerald-500 h-full rounded-full" style="width: ${jSec}%;"></div></div>
               </div>
               <div>
                 <div class="flex justify-between text-amber-400 font-semibold mb-0.5"><span>☕</span><span>${jTeam}%</span></div>
-                <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden"><div class="bg-amber-500 h-full rounded-full" style="width: ${jTeam}%;"></div></div>
+                <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden"><div class="bg-amber-500 h-full rounded-full" style="width: ${jTeam}%;"></div></div>
               </div>
               <div>
                 <div class="flex justify-between text-cyan-400 font-semibold mb-0.5"><span>⏱️</span><span>${jPlan}%</span></div>
-                <div class="w-full bg-slate-950 rounded-full h-1.5 overflow-hidden"><div class="bg-cyan-500 h-full rounded-full" style="width: ${jPlan}%;"></div></div>
+                <div class="w-full bg-slate-950 rounded-full h-2 overflow-hidden"><div class="bg-cyan-500 h-full rounded-full" style="width: ${jPlan}%;"></div></div>
               </div>
             </div>
           </div>
         `;
-      }).join('') || '<div class="text-xs text-slate-500 text-center py-4">Aucune équipe connectée...</div>';
+      }).join('') || '<div class="text-xs text-slate-500 text-center py-2">Aucune équipe connectée...</div>';
 
       const qIdx = sessionData.currentQuestion;
       const totalQ = gameSituations.length;
       const dynamicBtn = document.getElementById('btn-animator-action');
+
+      // Gestion des cartes de réponses en bas
+      for (let i = 1; i <= 4; i++) {
+        const card = document.getElementById(`anim-q-card-${i}`);
+        card.className = "bg-slate-900 border border-slate-700 p-3 rounded-xl text-left transition-all";
+      }
 
       if (sessionData.status === 'finished') {
         document.getElementById('animator-matrice-box').style.display = 'none';
@@ -748,17 +787,15 @@
 
         document.getElementById('current-time').innerText = "12:00";
         document.getElementById('animator-final-stats').innerHTML = `
-          <div class="text-center"><p class="text-xs text-slate-400">🦺 Sécurité Moyenne</p><p class="text-xl font-bold text-emerald-400">${avgSec}%</p></div>
-          <div class="text-center"><p class="text-xs text-slate-400">☕ Climat Moyenne</p><p class="text-xl font-bold text-amber-400">${avgTeam}%</p></div>
-          <div class="text-center"><p class="text-xs text-slate-400">⏱️ Planning Moyen</p><p class="text-xl font-bold text-cyan-400">${avgPlan}%</p></div>
+          <div class="text-center"><p class="text-xs text-slate-400">🦺 Sécurité Moyenne</p><p class="text-lg font-bold text-emerald-400">${avgSec}%</p></div>
+          <div class="text-center"><p class="text-xs text-slate-400">☕ Climat Moyenne</p><p class="text-lg font-bold text-amber-400">${avgTeam}%</p></div>
+          <div class="text-center"><p class="text-xs text-slate-400">⏱️ Planning Moyen</p><p class="text-lg font-bold text-cyan-400">${avgPlan}%</p></div>
         `;
 
-        // Calcul des meilleurs joueurs (ayant le plus de meilleures réponses / correctCount)
+        // Calcul des meilleurs joueurs
         let maxCorrect = -1;
         entries.forEach(([_, j]) => {
-          if ((j.correctCount || 0) > maxCorrect) {
-            maxCorrect = j.correctCount || 0;
-          }
+          if ((j.correctCount || 0) > maxCorrect) maxCorrect = j.correctCount || 0;
         });
 
         const topPlayers = entries.filter(([_, j]) => (j.correctCount || 0) === maxCorrect);
@@ -767,17 +804,16 @@
         if (entries.length > 0 && maxCorrect >= 0) {
           const namesStr = topPlayers.map(([_, p]) => p.name).join(' & ');
           winnersSection.innerHTML = `
-            <div class="flex items-center justify-center space-x-2 text-equans-gold font-black text-lg">
+            <div class="flex items-center justify-center space-x-2 text-equans-gold font-black text-base">
               <i class="fa-solid fa-trophy animate-bounce"></i>
               <span>Meilleur(s) Stratège(s) : ${namesStr}</span>
               <i class="fa-solid fa-trophy animate-bounce"></i>
             </div>
-            <p class="text-xs text-slate-300">Avec un total de <strong>${maxCorrect} / ${gameSituations.length}</strong> choix optimaux validés dans la Matrice d'Eisenhower !</p>
+            <p class="text-xs text-slate-300">Avec un total de <strong>${maxCorrect} / ${gameSituations.length}</strong> choix optimaux validés !</p>
           `;
         } else {
           winnersSection.innerHTML = `<p class="text-xs text-slate-400">Aucun choix enregistré.</p>`;
         }
-
         return;
       }
 
@@ -792,12 +828,31 @@
         document.getElementById('animator-status-label').innerText = "Situation en cours";
         document.getElementById('animator-progress-label').innerText = `Situation ${qIdx + 1} / ${totalQ}`;
 
+        // Vérification si tous les joueurs ont joué
+        const allAnswered = entries.length > 0 && entries.every(([_, j]) => j.hasAnswered);
+        const popup = document.getElementById('animator-popup-feedback');
+
+        if (allAnswered) {
+          // Illumination en vert de la bonne réponse
+          const correctCard = document.getElementById(`anim-q-card-${sit.correctQuadrant}`);
+          correctCard.className = "bg-emerald-950 border-2 border-emerald-500 p-3 rounded-xl text-left transition-all shadow-lg shadow-emerald-900/50";
+
+          // Affichage de la fenêtre Pop-Up
+          const feedback = sit.feedbacks[sit.correctQuadrant];
+          document.getElementById('popup-title').innerText = feedback.title;
+          document.getElementById('popup-text').innerText = feedback.text;
+          document.getElementById('popup-tip').innerText = feedback.tip;
+          popup.classList.remove('hidden');
+        } else {
+          popup.classList.add('hidden');
+        }
+
         if (qIdx + 1 >= totalQ) {
           dynamicBtn.innerText = "🏆 Clôturer la Matinée (12h00)";
-          dynamicBtn.className = "w-full py-4 bg-equans-red hover:bg-red-600 text-white font-extrabold text-base rounded-xl shadow-lg transition-all";
+          dynamicBtn.className = "w-full py-3 bg-equans-red hover:bg-red-600 text-white font-extrabold text-sm rounded-xl shadow-lg transition-all";
         } else {
           dynamicBtn.innerText = "➡️ Situation Suivante";
-          dynamicBtn.className = "w-full py-4 bg-equans-orange hover:bg-orange-600 text-white font-extrabold text-base rounded-xl shadow-lg transition-all";
+          dynamicBtn.className = "w-full py-3 bg-equans-orange hover:bg-orange-600 text-white font-extrabold text-sm rounded-xl shadow-lg transition-all";
         }
       }
     }
